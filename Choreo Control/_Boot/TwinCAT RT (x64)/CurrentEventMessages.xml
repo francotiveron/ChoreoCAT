@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<TcEventSources Version="2">
+	<Source>
+		<GUID>{28111931-0002-0000-5228-4D0416001000}</GUID>
+		<Name LcId="1031">EJ1101-0022 EtherCAT-Koppler (ID-Switch)</Name>
+		<Name LcId="1033">EJ1101-0022 EtherCAT Coupler (ID switch)</Name>
+		<Event>
+			<Id>16643</Id>
+			<Message LcId="1033">Undervoltage Us</Message>
+		</Event>
+		<Event>
+			<Id>16644</Id>
+			<Message LcId="1033">Overvoltage Us</Message>
+		</Event>
+		<Property>
+			<Name>DisplayTxtId</Name>
+			<Value>true</Value>
+		</Property>
+	</Source>
+</TcEventSources>

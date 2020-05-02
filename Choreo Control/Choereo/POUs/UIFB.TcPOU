@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="UIFB" Id="{5f5724ba-b515-4970-a705-6a0dab9d357f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FINAL UIFB
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="ClearMotionAndJog" Id="{11ef4a45-0560-43fe-bb9d-e74b80ded0b2}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD PUBLIC ClearMotionAndJog : DINT
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[GVL.Axis_01_MA_Enable := GVL.Axis_01_MR_Enable := GVL.Axis_01_Jog_Up_Enable := GVL.Axis_01_Jog_Dn_Enable := 
+GVL.Axis_02_MA_Enable := GVL.Axis_02_MR_Enable := GVL.Axis_02_Jog_Up_Enable := GVL.Axis_02_Jog_Dn_Enable := 
+GVL.Axis_03_MA_Enable := GVL.Axis_03_MR_Enable := GVL.Axis_03_Jog_Up_Enable := GVL.Axis_03_Jog_Dn_Enable := 
+GVL.Axis_04_MA_Enable := GVL.Axis_04_MR_Enable := GVL.Axis_04_Jog_Up_Enable := GVL.Axis_04_Jog_Dn_Enable := 
+GVL.Axis_05_MA_Enable := GVL.Axis_05_MR_Enable := GVL.Axis_05_Jog_Up_Enable := GVL.Axis_05_Jog_Dn_Enable := 
+GVL.Axis_06_MA_Enable := GVL.Axis_06_MR_Enable := GVL.Axis_06_Jog_Up_Enable := GVL.Axis_06_Jog_Dn_Enable := 
+GVL.Axis_07_MA_Enable := GVL.Axis_07_MR_Enable := GVL.Axis_07_Jog_Up_Enable := GVL.Axis_07_Jog_Dn_Enable := 
+GVL.Axis_08_MA_Enable := GVL.Axis_08_MR_Enable := GVL.Axis_08_Jog_Up_Enable := GVL.Axis_08_Jog_Dn_Enable := 
+GVL.Axis_09_MA_Enable := GVL.Axis_09_MR_Enable := GVL.Axis_09_Jog_Up_Enable := GVL.Axis_09_Jog_Dn_Enable := 
+GVL.Axis_10_MA_Enable := GVL.Axis_10_MR_Enable := GVL.Axis_10_Jog_Up_Enable := GVL.Axis_10_Jog_Dn_Enable := 
+GVL.Axis_11_MA_Enable := GVL.Axis_11_MR_Enable := GVL.Axis_11_Jog_Up_Enable := GVL.Axis_11_Jog_Dn_Enable := 
+GVL.Axis_12_MA_Enable := GVL.Axis_12_MR_Enable := GVL.Axis_12_Jog_Up_Enable := GVL.Axis_12_Jog_Dn_Enable := 
+GVL.Axis_13_MA_Enable := GVL.Axis_13_MR_Enable := GVL.Axis_13_Jog_Up_Enable := GVL.Axis_13_Jog_Dn_Enable := 
+GVL.Axis_14_MA_Enable := GVL.Axis_14_MR_Enable := GVL.Axis_14_Jog_Up_Enable := GVL.Axis_14_Jog_Dn_Enable := 
+GVL.Axis_15_MA_Enable := GVL.Axis_15_MR_Enable := GVL.Axis_15_Jog_Up_Enable := GVL.Axis_15_Jog_Dn_Enable := 
+GVL.Axis_16_MA_Enable := GVL.Axis_16_MR_Enable := GVL.Axis_16_Jog_Up_Enable := GVL.Axis_16_Jog_Dn_Enable := 
+GVL.Axis_17_MA_Enable := GVL.Axis_17_MR_Enable := GVL.Axis_17_Jog_Up_Enable := GVL.Axis_17_Jog_Dn_Enable := 
+GVL.Axis_18_MA_Enable := GVL.Axis_18_MR_Enable := GVL.Axis_18_Jog_Up_Enable := GVL.Axis_18_Jog_Dn_Enable := 
+GVL.Axis_19_MA_Enable := GVL.Axis_19_MR_Enable := GVL.Axis_19_Jog_Up_Enable := GVL.Axis_19_Jog_Dn_Enable := 
+GVL.Axis_20_MA_Enable := GVL.Axis_20_MR_Enable := GVL.Axis_20_Jog_Up_Enable := GVL.Axis_20_Jog_Dn_Enable := 
+GVL.Axis_21_MA_Enable := GVL.Axis_21_MR_Enable := GVL.Axis_21_Jog_Up_Enable := GVL.Axis_21_Jog_Dn_Enable := 
+GVL.Axis_22_MA_Enable := GVL.Axis_22_MR_Enable := GVL.Axis_22_Jog_Up_Enable := GVL.Axis_22_Jog_Dn_Enable := 
+GVL.Axis_23_MA_Enable := GVL.Axis_23_MR_Enable := GVL.Axis_23_Jog_Up_Enable := GVL.Axis_23_Jog_Dn_Enable := 
+GVL.Axis_24_MA_Enable := GVL.Axis_24_MR_Enable := GVL.Axis_24_Jog_Up_Enable := GVL.Axis_24_Jog_Dn_Enable := 
+0;
+
+ClearMotionAndJog := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GetMotorsGroup" Id="{aff4a827-7071-4903-bfa0-75ca92683f35}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD PUBLIC GetMotorsGroup : DINT
+VAR_OUTPUT
+	res: ARRAY[0..15] OF INT;
+END_VAR
+VAR
+	ptr: POINTER TO BOOL;
+	im, ig:INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[ptr := ADR(GVL.Group_01_Axis_01);
+MEMSET(destAddr:=ADR(res[0]), fillByte:=0, n:=SIZEOF(res));
+FOR ig := 1 TO 8 DO
+	FOR im := 0 TO 15 DO
+		IF ptr^ THEN
+			IF res[im] <> 0 THEN
+				ptr^ := 0;
+			ELSE
+				res[im] := ig;
+			END_IF
+		END_IF
+		ptr := ptr + 1;
+	END_FOR
+END_FOR
+
+GetMotorsGroup := 0;
+RETURN;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SaveGroupMotors" Id="{14725f97-0d69-4151-8e3a-914062cc559c}">
+      <Declaration><![CDATA[{attribute 'TcRpcEnable'}
+METHOD PUBLIC SaveGroupMotors : DINT
+VAR_INPUT
+	Group:INT;
+	Bitmap:WORD;
+END_VAR
+VAR
+	ptr: POINTER TO BOOL;
+	i:INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[ptr := ADR(GVL.Group_01_Axis_01) + Group * 16;
+
+FOR i := 0 TO 15 DO
+	ptr^ := (Bitmap AND 1) <> 0;
+	ptr := ptr + 1;
+	Bitmap := SHR(Bitmap, 1);
+END_FOR
+
+SaveGroupMotors := 0;
+RETURN;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="UIFB">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="UIFB.ClearMotionAndJog">
+      <LineId Id="3" Count="25" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="UIFB.GetMotorsGroup">
+      <LineId Id="3" Count="16" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="UIFB.SaveGroupMotors">
+      <LineId Id="3" Count="8" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
